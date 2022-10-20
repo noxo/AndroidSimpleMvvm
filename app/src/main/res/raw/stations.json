@@ -1,0 +1,340 @@
+[
+  {
+    "id": 127033,
+    "latitude": 48.278067,
+    "longitude": 16.456204,
+    "name": "BIP P&R Leopoldau Station 2",
+    "city": "Wien",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 127033,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 126984,
+        "connectors": [
+          {
+            "type": "Type F",
+            "maxKw": 16
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 126932,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 127005,
+        "connectors": [
+          {
+            "type": "Type F",
+            "maxKw": 16
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 121952,
+    "latitude": 48.757137,
+    "longitude": 9.313445,
+    "name": "EnBW Ladestation 3175_1",
+    "city": "Esslingen",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 121952,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          },
+          {
+            "type": "Type F",
+            "maxKw": 16
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 121439,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          },
+          {
+            "type": "Type F",
+            "maxKw": 16
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 118737,
+    "latitude": 49.731636,
+    "longitude": 10.147702,
+    "name": "Innopark Lademeile",
+    "city": "Kitzingen",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 118737,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 118738,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 113072,
+        "connectors": [
+          {
+            "type": "Type F",
+            "maxKw": 16
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 113073,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 118716,
+    "latitude": 49.023894,
+    "longitude": 12.714991,
+    "name": "Haibach-Elisabethzell",
+    "city": "Haibach",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 118716,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 118720,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 110222,
+    "latitude": 48.029295,
+    "longitude": 7.858328,
+    "name": "Ladestation Smart innogy SE / 0842",
+    "city": "Freiburg",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 110222,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 110221,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 113649,
+    "latitude": 48.20362,
+    "longitude": 16.33404,
+    "name": "LugnerCity 3K 2 - 837 (Kombo)",
+    "city": "Wien",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 113649,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 124518,
+    "latitude": 46.201388,
+    "longitude": 6.110898,
+    "name": "AMAG Genf (Petit-Lancy)",
+    "city": "Petit-Lancy",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 124518,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 124517,
+        "connectors": [
+          {
+            "type": "CHAdeMO",
+            "maxKw": 50
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 124511,
+        "connectors": [
+          {
+            "type": "CCS",
+            "maxKw": 50
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 109979,
+    "latitude": 50.781667,
+    "longitude": 6.508333,
+    "name": "Ladestation smart innogy SE",
+    "city": "Düren",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 109979,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 109920,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 134222,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 134225,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  },
+  {
+    "id": 124312,
+    "latitude": 47.442761,
+    "longitude": 9.413105,
+    "name": "Zil-Garage, St.Gallen",
+    "city": "St. Gallen",
+    "provider": "Hubject",
+    "evses": [
+      {
+        "id": 124312,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      },
+      {
+        "id": 124313,
+        "connectors": [
+          {
+            "type": "Mennekes",
+            "maxKw": 22
+          }
+        ],
+        "groupName": "Default DEMS"
+      }
+    ]
+  }
+]
