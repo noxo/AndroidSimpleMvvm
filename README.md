@@ -1,4 +1,4 @@
 # EvApp
 
 Simple MVVM exercise for Android
-- MVVM, Hilt, Kotlin, Livedata, Coroutines
+- MVVM, Hilt, Kotlin, Livedata, Coroutines, Compose
