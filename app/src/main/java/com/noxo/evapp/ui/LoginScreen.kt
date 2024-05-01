@@ -22,7 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {
+fun LoginScreen(viewModel: LoginViewModel) {
     LoginScreenContent(viewModel::login)
 }
 @Composable

@@ -26,23 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val loginViewModel = hiltViewModel<LoginViewModel>()
-                    val stationsViewModel = hiltViewModel<StationViewModel>()
-                    val navController: NavHostController = rememberNavController()
-
-                    NavHost(navController = navController, startDestination = "Login") {
-                        composable("Login") {
-                            LoginScreen(loginViewModel)
-                        }
-                        composable("Stations/{authToken}") {
-                            StationScreen(stationsViewModel, it.arguments!!.getString("authToken")!!)
-                        }
-                    }
-                    loginViewModel.currentCredentials.observe(this) { loginResult ->
-                        if (loginResult.isSuccess) {
-                            navController.navigate("Stations/${loginResult}")
-                        }
-                    }
+                    Navigation()
                 }
             }
         }

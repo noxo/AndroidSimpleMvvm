@@ -19,7 +19,7 @@ import com.noxo.evapp.model.Evse
 import com.noxo.evapp.model.Station
 
 @Composable
-fun StationScreen(viewModel: StationViewModel = hiltViewModel(), token : String)  {
+fun StationScreen(viewModel: StationViewModel, token : String)  {
     val stations = viewModel.currentStationList.observeAsState()
     LaunchedEffect(key1 = Unit) {
         viewModel.getStations(token, Double.MIN_VALUE, Double.MAX_VALUE)
