@@ -1,30 +1,36 @@
 package com.noxo.evapp.ui
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.noxo.evapp.model.Credentials
-import com.noxo.evapp.service.EvService
+import com.noxo.evapp.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val evService: EvService) : ViewModel() {
+class LoginViewModel @Inject constructor(private val evService: UserRepository) : ViewModel() {
 
-    private val coroutineExceptionHanlder = CoroutineExceptionHandler { _, throwable ->
-        currentCredentials.postValue(Result.failure(throwable))
-    }
-
-    private val coroutineScope = CoroutineScope(Dispatchers.IO + coroutineExceptionHanlder)
-
-    val currentCredentials: MutableLiveData<Result<Credentials>> by lazy {
-        MutableLiveData<Result<Credentials>>()
-    }
+    private val _uiState = MutableStateFlow(LoginState(false, inProgress = false, Credentials("")))
+    val uiState: StateFlow<LoginState> = _uiState.asStateFlow()
 
     fun login(username : String, password : String)  {
-        this.coroutineScope.launch {
-            val credentials = evService.login(username, password)
-            currentCredentials.postValue(Result.success(credentials))
+        viewModelScope.launch {
+            _uiState.update { it.copy(inProgress = true) }
+            val result = evService.login(username, password)
+            result.onSuccess { credentials ->
+                _uiState.update { it.copy(loggedIn = true, inProgress = false, credentials = credentials) }
+            }
         }
     }
 }
+
+data class LoginState(
+    val loggedIn : Boolean,
+    val inProgress : Boolean,
+    val credentials : Credentials
+)

@@ -1,31 +1,41 @@
 package com.noxo.evapp.ui
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.noxo.evapp.model.Credentials
 import com.noxo.evapp.model.Station
-import com.noxo.evapp.service.EvService
+import com.noxo.evapp.repository.EVStationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 
 import javax.inject.Inject
 
 @HiltViewModel
-class StationViewModel @Inject constructor(private val evService: EvService) : ViewModel() {
+class StationViewModel @Inject constructor(private val evStationRepository: EVStationRepository) : ViewModel() {
 
-    private val coroutineExceptionHanlder = CoroutineExceptionHandler { _, throwable ->
-        currentStationList.postValue(Result.failure(throwable))
-    }
+    private val _uiState = MutableStateFlow(StationListState(false, emptyArray()))
+    val uiState: StateFlow<StationListState> = _uiState.asStateFlow()
 
-    private val coroutineScope = CoroutineScope(Dispatchers.IO + coroutineExceptionHanlder)
-
-    val currentStationList: MutableLiveData<Result<Array<Station>>> by lazy {
-        MutableLiveData<Result<Array<Station>>>()
+    init {
+        getStations("", 0.0,0.0)
     }
 
     fun getStations(token : String, latitude : Double, longitude: Double)  {
-        this.coroutineScope.launch {
-            val stations = evService.getStations(token, latitude, longitude)
-            currentStationList.postValue(Result.success(stations))
+        viewModelScope.launch {
+            val stations = evStationRepository.getStations(token, latitude, longitude)
+            stations.onSuccess { stationList ->
+                _uiState.update { it.copy(true, stationList) }
+            }
         }
     }
+
 }
+
+data class StationListState (
+    val loaded : Boolean,
+    val stationList :Array<Station>
+)
