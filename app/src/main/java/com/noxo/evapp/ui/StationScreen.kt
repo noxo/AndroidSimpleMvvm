@@ -21,7 +21,7 @@ import com.noxo.evapp.model.Evse
 import com.noxo.evapp.model.Station
 
 @Composable
-fun StationScreen(viewModel: StationViewModel, token : String)  {
+fun StationScreen(viewModel: StationViewModel)  {
     val stations by viewModel.uiState.collectAsStateWithLifecycle()
     StationScreenContent(stations = stations.stationList)
 }

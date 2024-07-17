@@ -67,6 +67,6 @@ fun LoginScreenContent(
 fun PreviewLoginScreen() {
     LoginScreenContent(
         login = fun(_: String, _: String) {},
-        loginState = LoginState(true, inProgress = false, Credentials(""))
+        loginState = LoginState(true, inProgress = false)
     )
 }
