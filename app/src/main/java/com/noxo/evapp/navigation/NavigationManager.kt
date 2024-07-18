@@ -1,16 +1,13 @@
 package com.noxo.evapp.navigation
 
-import com.noxo.evapp.navigation.NavigationRoutes.Default
-import kotlinx.coroutines.flow.MutableStateFlow
-
+import kotlinx.coroutines.channels.Channel
 //https://medium.com/google-developer-experts/modular-navigation-with-jetpack-compose-fda9f6b2bef7
-
 class NavigationManager {
-    var commands = MutableStateFlow(Default)
-    fun navigate(
+    var commands = Channel<NavigationCommand>(Channel.CONFLATED)
+    suspend fun navigate(
         directions: NavigationCommand
     ) {
-        commands.value = directions
+        commands.send(directions)
     }
 
 }

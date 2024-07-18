@@ -2,7 +2,6 @@ package com.noxo.evapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.noxo.evapp.model.Credentials
 import com.noxo.evapp.model.Station
 import com.noxo.evapp.repository.AuthRepository
 import com.noxo.evapp.repository.EVStationRepository
