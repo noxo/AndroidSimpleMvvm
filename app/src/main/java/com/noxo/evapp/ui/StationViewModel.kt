@@ -5,17 +5,13 @@ import androidx.lifecycle.viewModelScope
 import com.noxo.evapp.model.Station
 import com.noxo.evapp.repository.AuthRepository
 import com.noxo.evapp.repository.EVStationRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-import javax.inject.Inject
-
-@HiltViewModel
-class StationViewModel @Inject constructor(
+class StationViewModel(
     private val evStationRepository: EVStationRepository,
     private val authRepository: AuthRepository
 ) : ViewModel() {

@@ -6,16 +6,13 @@ import com.noxo.evapp.navigation.NavigationRoutes
 import com.noxo.evapp.navigation.NavigationManager
 import com.noxo.evapp.repository.AuthRepository
 import com.noxo.evapp.repository.UserRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import javax.inject.Inject
 
-@HiltViewModel
-class LoginViewModel @Inject constructor(
+class LoginViewModel (
     private val userRepository: UserRepository,
     private val navigationManager: NavigationManager,
     private val authRepository: AuthRepository

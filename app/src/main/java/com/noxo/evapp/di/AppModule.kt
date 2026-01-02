@@ -1,43 +1,40 @@
 package com.noxo.evapp.di
 
-import android.content.Context
 import com.noxo.evapp.navigation.NavigationManager
 import com.noxo.evapp.repository.AuthRepository
+import com.noxo.evapp.repository.AuthRepositoryImpl
 import com.noxo.evapp.repository.EVStationRepository
-import com.noxo.evapp.repository.FakeEVStationRepository
-import com.noxo.evapp.repository.FakeUserRepository
+import com.noxo.evapp.repository.EVStationRepositoryImpl
 import com.noxo.evapp.repository.UserRepository
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import com.noxo.evapp.repository.UserRepositoryImpl
+import com.noxo.evapp.service.AuthService
+import com.noxo.evapp.service.DataStoreAuthService
+import com.noxo.evapp.service.EVStationService
+import com.noxo.evapp.service.FakeEVStationService
+import com.noxo.evapp.service.FakeUserService
+import com.noxo.evapp.service.UserService
+import com.noxo.evapp.ui.LoginViewModel
+import com.noxo.evapp.ui.StationViewModel
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
-    @Provides
-    @Singleton
-    fun provideUserRepository(@ApplicationContext context: Context): UserRepository {
-        return FakeUserRepository(context)
-    }
+val appModule = module {
+    // ---------- View models ----------
+    viewModel { LoginViewModel(get(), get(), get()) }
+    viewModel { StationViewModel(get(), get()) }
 
-    @Provides
-    @Singleton
-    fun provideEvStationRepository(@ApplicationContext context: Context): EVStationRepository {
-        return FakeEVStationRepository(context)
-    }
+    // ---------- Services ----------
+    single<AuthService> { DataStoreAuthService(androidContext()) }
+    single<UserService> { FakeUserService(androidContext()) }
+    single<EVStationService> { FakeEVStationService(androidContext()) }
 
-    @Provides
-    @Singleton
-    fun provideAuthRepository(@ApplicationContext context: Context): AuthRepository {
-        return AuthRepository(context)
-    }
+    // ---------- Repositories ----------
+    single<AuthRepository> { AuthRepositoryImpl(get()) }
+    single<UserRepository> { UserRepositoryImpl(get()) }
+    single<EVStationRepository> { EVStationRepositoryImpl(get()) }
 
-    @Provides
-    @Singleton
-    fun provideNavigationManager(): NavigationManager {
-        return NavigationManager()
-    }
+    // ---------- Navigation ----------
+    single { NavigationManager() }
+
 }

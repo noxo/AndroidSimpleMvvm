@@ -1,15 +1,14 @@
-package com.noxo.evapp.repository
+// /Users/noxo/git/AndroidSimpleMvvm/app/src/main/java/com/noxo/evapp/service/FakeEVStationService.kt
+package com.noxo.evapp.service
 
 import android.content.Context
 import com.google.gson.Gson
 import com.noxo.evapp.R
 import com.noxo.evapp.model.Station
-import dagger.hilt.android.qualifiers.ActivityContext
-import javax.inject.Inject
 
-class FakeEVStationRepository  @Inject constructor(
-    @ActivityContext private val context: Context
-): EVStationRepository {
+class FakeEVStationService(
+    private val context: Context
+) : EVStationService {
 
     private inline fun <reified T> getJson(jsonResource : Int): T {
         val json = context.resources.openRawResource(jsonResource).bufferedReader().use {
@@ -25,5 +24,4 @@ class FakeEVStationRepository  @Inject constructor(
     ): Result<Array<Station>> {
         return Result.success(getJson(R.raw.stations))
     }
-
 }

@@ -1,7 +1,16 @@
 package com.noxo.evapp
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.noxo.evapp.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.GlobalContext.startKoin
 
-@HiltAndroidApp
-class EvApp : Application()
+class EvApp : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@EvApp)
+            modules(appModule)
+        }
+    }
+}

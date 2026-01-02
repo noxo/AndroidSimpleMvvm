@@ -11,15 +11,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.noxo.evapp.navigation.NavigationManager
 import com.noxo.evapp.theme.EvAppTheme
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.consumeAsFlow
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var navigationManager: NavigationManager
+    private val navigationManager: NavigationManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
