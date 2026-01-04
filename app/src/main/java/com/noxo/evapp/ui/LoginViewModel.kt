@@ -2,7 +2,6 @@ package com.noxo.evapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.noxo.evapp.navigation.NavigationRoutes
 import com.noxo.evapp.navigation.NavigationManager
 import com.noxo.evapp.repository.AuthRepository
 import com.noxo.evapp.repository.UserRepository
@@ -28,7 +27,7 @@ class LoginViewModel (
             result.onSuccess { credentials ->
                 authRepository.setAuthToken(credentials.token)
                 _uiState.update { it.copy(loggedIn = true, inProgress = false) }
-                navigationManager.navigate(NavigationRoutes.stations)
+                navigationManager.openStationList()
             }
         }
     }

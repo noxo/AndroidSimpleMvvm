@@ -1,13 +1,19 @@
 package com.noxo.evapp.navigation
 
-import kotlinx.coroutines.channels.Channel
-//https://medium.com/google-developer-experts/modular-navigation-with-jetpack-compose-fda9f6b2bef7
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableStateListOf
+
 class NavigationManager {
-    var commands = Channel<NavigationCommand>(Channel.CONFLATED)
-    suspend fun navigate(
-        directions: NavigationCommand
-    ) {
-        commands.send(directions)
+    private val _backStack = mutableStateListOf<NavigationRoute>(NavigationRoute.Login)
+    val backStack = derivedStateOf { _backStack.toList() }
+
+    fun openStationList() {
+        if (!backStack.value.contains(NavigationRoute.Station)) {
+            _backStack.add(NavigationRoute.Station)
+        }
     }
 
+    fun goBack() {
+        if (_backStack.size > 1) _backStack.removeLastOrNull()
+    }
 }

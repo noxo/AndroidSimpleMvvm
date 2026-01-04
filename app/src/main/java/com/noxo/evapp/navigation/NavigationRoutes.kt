@@ -1,16 +1,8 @@
 package com.noxo.evapp.navigation
 
-import androidx.navigation.NamedNavArgument
+import androidx.navigation3.runtime.NavKey
 
-object NavigationRoutes {
-    val login  = object : NavigationCommand {
-        override val arguments = emptyList<NamedNavArgument>()
-        override val destination = "login"
-    }
-
-    val stations = object : NavigationCommand {
-        override val arguments = emptyList<NamedNavArgument>()
-        override val destination = "stations"
-    }
-
+sealed class NavigationRoute : NavKey {
+    object Login : NavigationRoute()
+    object Station : NavigationRoute()
 }
